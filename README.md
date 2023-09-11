@@ -1,5 +1,16 @@
 # Wishlist - Squadio
 
+## Description
+
+> A simple Laravel project, where the user can perform CRUD operations on the items of the Wishlist
+
+## Features
+
+1. API for List, Create, Show Items
+1. Database seeding for creating 100 items for testing
+1. Test cases to ensure the quality
+1. Postman collection for testing API
+
 ## Getting started
 
 1. Fork this Repository
