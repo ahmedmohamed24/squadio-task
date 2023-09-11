@@ -1,50 +1,59 @@
-## Getting started:
+# Wishlist - Squadio
+
+## Getting started
+
 1. Fork this Repository
 
-    ``` git clone https://github.com/ahmedmohamed24/docker-src.git docker-laravel ```
+   `git clone https://github.com/ahmedmohamed24/squadio-task wishlist`
+
 1. change the current directory to project path ex:
 
-      ``` cd docker-laravel ```
-1. change your database credentials in *docker-compose.yml* file
+   `cd wishlist`
 
-    ```
-    environment:
-      MYSQL_DATABASE: shop
-      MYSQL_USER: root
-      MYSQL_PASSWORD: secret
-      MYSQL_ROOT_PASSWORD: secret
-      SERVICE_TAGS: dev
-      SERVICE_NAME: mysql
+1. update MYSQL credentials if needed in _docker-compose.yml_ file
 
-    ```
-    *docker will create your database with the provided credentials during installation process*
-    ***
+   ```yaml
+   environment:
+     MYSQL_DATABASE: wishlist
+     MYSQL_ROOT_PASSWORD: password
+     SERVICE_TAGS: dev
+     SERVICE_NAME: mysql
+   ```
 
-1. ``` docker-compose build && docker-compose up -d ```
+   _docker will create your database with the provided credentials during installation process_
 
-    **alert:** </span> if there is a server running in your machine, you should stop it or change port 80 in docker-compose.yml to another port(8000)
-    ```
-    services:
-      app:
-        build:
-          context: .
-          dockerfile: nginx.dockerfile
-          container_name: nginx
-          ports:
-            - "8000:80"
-    ```
-    *you can do this with each service*
+   ***
 
-1. install new laravel project in `src` folder or copy an existing one, to install new project run ```cd src && docker-compose exec php composer create-project --prefer-dist laravel/laravel . && cd ../```
-1. Install dependencies with composer
+1. `docker-compose build && docker-compose up -d`
 
-      ```docker-compose exec php composer install ```
-1. run migrations
+   **alert:** </span> if there is a server running in your machine, you should stop it or change port 80 in docker-compose.yml to another port(8000)
 
-     ``` docker-compose exec php php /var/www/html/artisan migrate ```
-1. run seeder
+   ```yaml
+   services:
+     app:
+       build:
+         context: .
+         dockerfile: nginx.dockerfile
+         container_name: nginx
+         ports:
+           - "8000:80"
+   ```
 
-     ``` docker-compose exec php php /var/www/html/artisan db:seed --class=DatabaseSeeder```
-1. run testcases
+   _you can do this with each service_
 
-      ``` docker-compose exec php php /var/www/html/artisan test```
+1. update the .env database credentials
+
+```
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=wishlist
+DB_USERNAME=root
+DB_PASSWORD=password
+```
+
+1. install composer dependencies `docker exec -it php composer install`
+
+1. Run test cases `docker exec -it php php artisan test`
+
+1. run migrations and seed items `docker-compose exec php php /var/www/html/artisan migrate --seed`
