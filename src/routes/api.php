@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\V1\ItemController;
+use App\Http\Controllers\API\V1\ItemStatisticsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::apiResource('item', ItemController::class)->only(['index', 'show', 'store']);
+
+Route::get('items/statistics', [ItemStatisticsController::class, 'getStatistics'])->name('items.statistics');

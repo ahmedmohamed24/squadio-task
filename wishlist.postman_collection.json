@@ -96,6 +96,48 @@
 					"response": []
 				},
 				{
+					"name": "view items statistics",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.test(\"the response id is same as requested\", function () {",
+									"        var jsonData = pm.response.json();",
+									"        pm.expect(jsonData.data.id).to.eql(1);",
+									"    });",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/items/statistics",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"items",
+								"statistics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "create",
 					"event": [
 						{

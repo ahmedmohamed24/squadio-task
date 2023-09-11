@@ -50,4 +50,18 @@ class ItemTest extends TestCase
             ->assertJsonFragment(['name' => $item->name])
         ;
     }
+
+    // @test
+    public function testViewingItemsStatistics()
+    {
+        $this->withoutExceptionHandling();
+        Item::factory()->count(10)->create(['price' => 5]);
+        $this->getJson(route('items.statistics'))
+            ->assertOk()
+            ->assertJsonFragment([
+                'totalPrice' => 50,
+                'averagePrice' => 5,
+            ])
+        ;
+    }
 }
