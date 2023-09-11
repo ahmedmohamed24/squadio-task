@@ -40,7 +40,7 @@
    ```
 
    _you can do this with each service_
-1. create .env file `cp .env.example .env`
+1. create .env file `cp src/.env.example src/.env`
 1. update the .env database credentials
 
 ```
