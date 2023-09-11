@@ -51,7 +51,7 @@
    ```
 
    _you can do this with each service_
-
+1. create .env file `cp src/.env.example src/.env`
 1. update the .env database credentials
 
 ```
@@ -68,3 +68,4 @@ DB_PASSWORD=password
 1. Run test cases `docker exec -it php php artisan test`
 
 1. run migrations and seed items `docker-compose exec php php /var/www/html/artisan migrate --seed`
+1. test your work with *postman*, Import the **wishlist.postman_collection.json** inside the postman and check the endpoints and test cases
